@@ -4,19 +4,19 @@ import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) {
-		System.out.println("==½ÃÀÛ==");
+		System.out.println("==ì‹œì‘==");
 		Scanner sc = new Scanner(System.in);
 		
 		while (true) {
 			
-			System.out.println("¹®Àå : ");
+			System.out.println("ë¬¸ì¥ : ");
 			String command = sc.nextLine();
 			
 			if (command.equals("exit")) {
 				break;
 			}
 		}
-		System.out.println("==³¡==");
+		System.out.println("==ë==");
 		sc.close();
 	}
 }
