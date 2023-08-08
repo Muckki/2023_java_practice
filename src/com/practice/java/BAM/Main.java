@@ -1,108 +1,65 @@
 package com.practice.java.BAM;
-
-class Main {
-	  public static void main(String[] args) {
-	    System.out.println("== 표준Tv 리모콘 들여오기 전 ==");
-	    
-	    샤오미Tv a샤오미Tv = new 샤오미Tv();
-	    삼성Tv a삼성Tv = new 삼성Tv();
-	    LGTv aLGTv = new LGTv();
-	    
-	    a샤오미Tv.켜기();
-	    // 출력 => 샤오미Tv 켜집니다.
-	    a샤오미Tv.끄기();
-	    // 출력 => 샤오미Tv 꺼집니다.
-	    a샤오미Tv.vr켜기();
-	    // 출력 => 샤오미Tv vr켜기!
-	    
-	    a삼성Tv.켜기();
-	    // 출력 => 삼성Tv 켜집니다.
-	    a삼성Tv.끄기();
-	    // 출력 => 삼성Tv 꺼집니다.
-	    a삼성Tv.ar켜기();
-	    // 출력 => 삼성Tv ar켜기!
-	    
-	    aLGTv.켜기();
-	    // 출력 => LGTv 켜집니다.
-	    aLGTv.끄기();
-	    // 출력 => LGTv 꺼집니다.
-	    aLGTv.게임모드전환();
-	    // 출력 => LGTv 게임모드전환!
-	    
-	    System.out.println("== 표준Tv 리모콘 들여온 후 ==");
-	    
-	    // 표준Tv 리모콘을 만든다.
-	    표준Tv a표준Tv;
-	    
-	    // a표준Tv 변수에 샤오미Tv 객체를 연결한다.
-	    a표준Tv = a샤오미Tv;
-	    a표준Tv.켜기();
-	    // 출력 : 샤오기TV 켜집니다.
-	    a표준Tv.끄기();
-	    // 출력 : 샤오기TV 꺼집니다.
-	    
-	    // a표준Tv 변수에 삼성Tv 객체를 연결한다.
-	    a표준Tv = a삼성Tv;
-	    a표준Tv.켜기();
-	    // 출력 : 삼성TV 켜집니다.
-	    a표준Tv.끄기();
-	    // 출력 : 삼성TV 꺼집니다.
-	    
-	    // a표준Tv 변수에 LGTv 객체를 연결한다.
-	    a표준Tv = aLGTv;
-	    a표준Tv.켜기();
-	    // 출력 : LGTV 켜집니다.
-	    a표준Tv.끄기();
-	    // 출력 : LGTV 꺼집니다.
-	    
-	    // LGTV만의 고유 기능을 표준Tv 리모콘을 이용해서 호출하기 => 불가능
-	    // (LGTv) => a표준Tv 변수에 있던 표준Tv 리모콘이 LGTv리모콘화 해서 `aLGTv2` 변수에 들어간다.
-	    LGTv aLGTv2 = (LGTv)a표준Tv;
-	    aLGTv2.게임모드전환();
-	  }
+class 사람 {
+	String 이름;
+	String 전화번호;
+	String 음식점;
+	음식점 a좋아하는_음식점;
+	String 선호하는_음식의_매운정도;
+	String 선호하는_음식;
+	
+	void 배달_음식_주문하다() {
+		a좋아하는_음식점.주문자 = 이름;
+		a좋아하는_음식점.주문자_번호 = 전화번호;
+		a좋아하는_음식점.정도 = 선호하는_음식의_매운정도;
+		a좋아하는_음식점.음식 = 선호하는_음식;
+		a좋아하는_음식점.주문접수();
 	}
-class 표준Tv {
-	void 켜기(){};
-	void 끄기(){};
 }
-	class 샤오미Tv extends 표준Tv {
-	  void 켜기() {
-	    System.out.println("샤오미Tv 켜집니다.");
-	  }
-	  
-	  void 끄기() {
-	    System.out.println("샤오미Tv 꺼집니다.");
-	  }
-	  
-	  void vr켜기() {
-	    System.out.println("샤오미Tv vr켜기!");
-	  }
+class 음식점 {
+	String 주문자;
+	String 주문자_번호;
+	String 정도;
+	String 음식;
+	void 주문접수() {};
+}
+class 영화반점 extends 음식점 {
+	void 주문접수() {
+		System.out.println("영화반점에서 " + 주문자 +"(" + 주문자_번호 + ")에게 " + 정도 + 음식 + "(을)를 배달합니다.");
 	}
+}
+class 북경반점 extends 음식점{
+	void 주문접수() {
+		System.out.println("북경반점에서 " + 주문자 + "("+ 주문자_번호 + ")에게 " + 정도 + 음식 + "(을)를 배달합니다.");
+	}
+}
+class Main {
+	public static void main(String[] args) {
+		사람 a김철수 = new 사람();
+		a김철수.이름 = "김철수";
+		a김철수.전화번호 = "010-1234-1234";
+		a김철수.a좋아하는_음식점 = new 영화반점();
+		a김철수.선호하는_음식의_매운정도 = "매운";
+		a김철수.선호하는_음식 = "짬뽕";
+		
+		사람 a김영희 = new 사람();
+		a김영희.이름 = "김영희";
+		a김영희.전화번호 = "010-4321-4321";
+		a김영희.a좋아하는_음식점 = new 북경반점();
+		a김영희.선호하는_음식의_매운정도 = "안매운";
+		a김영희.선호하는_음식 = "짬뽕";
+		
+		a김철수.배달_음식_주문하다();
+		// 영화반점에서 김철수(010-1234-1234)에게 매운 짬뽕(을)를 배달합니다.
+		
+		a김영희.배달_음식_주문하다();
+		// 북경반점에서 김영희(010-4321-4321)에게 안매운 짬뽕(을)를 배달합니다.
+		
+		a김영희.a좋아하는_음식점 = a김철수.a좋아하는_음식점;
+		a김영희.선호하는_음식의_매운정도 = "아주 매운";
+		a김영희.선호하는_음식 = "짜장";
+		
+		a김영희.배달_음식_주문하다();
+		// 영화반점에서 김영희(010-4321-4321)에게 아주 매운 짜장(을)를 배달합니다.
+	}
+}
 
-	class 삼성Tv extends 표준Tv {
-	  void 켜기() {
-	    System.out.println("삼성Tv 켜집니다.");
-	  }
-	  
-	  void 끄기() {
-	    System.out.println("삼성Tv 꺼집니다.");
-	  }
-	  
-	  void ar켜기() {
-	    System.out.println("삼성Tv ar켜기!");
-	  }
-	}
-
-	class LGTv extends 표준Tv {
-	  void 켜기() {
-	    System.out.println("LGTv 켜집니다.");
-	  }
-	  
-	  void 끄기() {
-	    System.out.println("LGTv 꺼집니다.");
-	  }
-	  
-	  void 게임모드전환() {
-	    System.out.println("LGTv 게임모드전환!");
-	  }
-	}
