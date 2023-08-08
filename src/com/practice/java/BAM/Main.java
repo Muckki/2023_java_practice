@@ -13,6 +13,9 @@ class 사람 {
 		a좋아하는_음식점.정도 = 선호하는_음식의_매운정도;
 		a좋아하는_음식점.음식 = 선호하는_음식;
 		a좋아하는_음식점.주문접수();
+		
+//		답안 : 
+//		a좋아하는_음식점.주문(이름, 전화번호, 선호하는_음식, 선호하는_음식의_매운정도);
 	}
 }
 class 음식점 {
@@ -22,15 +25,26 @@ class 음식점 {
 	String 음식;
 	void 주문접수() {};
 }
+// 답안 : .. abstract 라는건 추상 메서드 라고 한다. 메서드를 선언만 하고 구체적으로 구현하지 않는 메서드라고.. 구체적인 구현은 뒤에서 했으니 앞에서는 abstract를 쓰는게 맞는듯 하다.
+// abstract class 음식점{
+//   abstract void 주문(String 주문자명, String 주문자_전화번호, String 음식, String 매운정도);}
 class 영화반점 extends 음식점 {
 	void 주문접수() {
 		System.out.println("영화반점에서 " + 주문자 +"(" + 주문자_번호 + ")에게 " + 정도 + 음식 + "(을)를 배달합니다.");
 	}
+//	답안 :
+//	void 주문(String 주문자명, String 주문자_전화번호, String 음식, String 매운정도){
+//		System.out.println("영화반점에서 " + 주문자명 + "(" + 주문자_전화번호 + ")에게 " + 매운정도 + " " + 음식 + "(을)를 배달합니다.");
+//	}
 }
 class 북경반점 extends 음식점{
 	void 주문접수() {
 		System.out.println("북경반점에서 " + 주문자 + "("+ 주문자_번호 + ")에게 " + 정도 + 음식 + "(을)를 배달합니다.");
 	}
+//	답안 :
+//	void 주문(String 주문자명, String 주문자_전화번호, String 음식, String 매운정도){
+//		System.out.println("북경반점에서 " + 주문자명 + "(" + 주문자_전화번호 + ")에게 " + 매운정도 + " " + 음식 + "(을)를 배달합니다.");
+//	}
 }
 class Main {
 	public static void main(String[] args) {
