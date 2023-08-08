@@ -2,48 +2,74 @@ package com.practice.java.BAM;
 
 class Main {
 	public static void main(String[] args) {
-		int i = 로봇.get정수();
-		boolean b = 로봇.get논리();
-		사람 a사람 = 로봇.get사람();
-		사람 a사람2 = 로봇.get사람2();
-		사람 a사람3 = 로봇.get사람3();
-		사람 a사람4 = 로봇.get사람4();
-		사람 a사람5 = 로봇.get사람5(123, false);
-		로봇.get사람6(123, false);
+		사람인력관리소 a사람인력관리소 = new 사람인력관리소();
+		
+		a사람인력관리소.add사람("홍길순", 33);
+		// 나이가 33살인 1번째 사람(홍길순)이 추가되었습니다.
+		a사람인력관리소.add사람("홍길동", 20);
+		// 나이가 20살인 2번째 사람(홍길동)이 추가되었습니다.
+		a사람인력관리소.add사람("임꺽정", 30);
+		// 나이가 30살인 3번째 사람(임꺽정)이 추가되었습니다.
+		
+		사람 a사람1 = a사람인력관리소.get사람(1);
+		a사람1.자기소개();
+		// 저는 1번, 홍길순, 33살 입니다.
+		
+		사람 a사람2 = a사람인력관리소.get사람(2);
+		a사람2.자기소개();
+		// 저는 2번, 홍길동, 20살 입니다.
+		
+		사람 a사람3 = a사람인력관리소.get사람(3);
+		a사람3.자기소개();
+		// 저는 3번, 임꺽정, 30살 입니다.
 	}
 }
 
-class 로봇 {
-	static int get정수() {
-		return 3;
+class 사람인력관리소 {
+	사람 a사람0;
+	사람 a사람1;
+	사람 a사람2;
+	
+	int 마지막;
+	사람인력관리소(){
+		마지막 = 0;
 	}
-	static boolean get논리() {
-		return false;
-	}
-	static 사람 get사람() {
+	void add사람(String 이름, int 나이) {
 		사람 a사람 = new 사람();
-		return a사람;
-	}
-	static 사람 get사람2() {
-		사람 a사람2 = new 사람();
-		return a사람2;
-	}
-	static 사람 get사람3() {
-		사람 a사람3 = new 사람();
-		return a사람3;
-	}
-	static 사람 get사람4() {
-		사람 a사람4 = new 사람();
-		return a사람4;
-	}
-	static 사람 get사람5(int a, boolean b) {
-		return null;
-	}
-	static 로봇 get사람6(int a, boolean b) {
-		return null;
+		int 번호 = 마지막 + 1;
+		a사람.이름 = 이름;
+		a사람.나이 = 나이;
+		a사람.번호 = 번호;
+		
+		if(번호 == 1) {
+			a사람0 = a사람;
+		}else if(번호 == 2) {
+			a사람1 = a사람;
+		}else if (번호 == 3) {
+			a사람2 = a사람;
+		}
+		
+		System.out.println("나이가" + a사람.나이 + "살인 " + a사람.번호 + "번째 사람(" + a사람.이름 + ")이 추가되었습니다.");
+		마지막++;
 	}
 	
+	사람 get사람(int 번호) {
+		if(번호 == 1) {
+			return a사람0;
+		}else if(번호 == 2) {
+			return a사람1;
+		}else if (번호 == 3) {
+			return a사람2;
+		}else {
+			return null;
+		}
+	}
 }
 class 사람 {
-	
+	int 번호;
+	String 이름;
+	int 나이;
+	void 자기소개() {
+		System.out.println("저는 " + 번호 + "번, " + 이름 + ", " + 나이 + "살 입니다.");
+	}
 }
