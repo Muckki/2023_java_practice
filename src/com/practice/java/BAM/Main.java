@@ -1,92 +1,108 @@
 package com.practice.java.BAM;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+class Main {
+	  public static void main(String[] args) {
+	    System.out.println("== 표준Tv 리모콘 들여오기 전 ==");
+	    
+	    샤오미Tv a샤오미Tv = new 샤오미Tv();
+	    삼성Tv a삼성Tv = new 삼성Tv();
+	    LGTv aLGTv = new LGTv();
+	    
+	    a샤오미Tv.켜기();
+	    // 출력 => 샤오미Tv 켜집니다.
+	    a샤오미Tv.끄기();
+	    // 출력 => 샤오미Tv 꺼집니다.
+	    a샤오미Tv.vr켜기();
+	    // 출력 => 샤오미Tv vr켜기!
+	    
+	    a삼성Tv.켜기();
+	    // 출력 => 삼성Tv 켜집니다.
+	    a삼성Tv.끄기();
+	    // 출력 => 삼성Tv 꺼집니다.
+	    a삼성Tv.ar켜기();
+	    // 출력 => 삼성Tv ar켜기!
+	    
+	    aLGTv.켜기();
+	    // 출력 => LGTv 켜집니다.
+	    aLGTv.끄기();
+	    // 출력 => LGTv 꺼집니다.
+	    aLGTv.게임모드전환();
+	    // 출력 => LGTv 게임모드전환!
+	    
+	    System.out.println("== 표준Tv 리모콘 들여온 후 ==");
+	    
+	    // 표준Tv 리모콘을 만든다.
+	    표준Tv a표준Tv;
+	    
+	    // a표준Tv 변수에 샤오미Tv 객체를 연결한다.
+	    a표준Tv = a샤오미Tv;
+	    a표준Tv.켜기();
+	    // 출력 : 샤오기TV 켜집니다.
+	    a표준Tv.끄기();
+	    // 출력 : 샤오기TV 꺼집니다.
+	    
+	    // a표준Tv 변수에 삼성Tv 객체를 연결한다.
+	    a표준Tv = a삼성Tv;
+	    a표준Tv.켜기();
+	    // 출력 : 삼성TV 켜집니다.
+	    a표준Tv.끄기();
+	    // 출력 : 삼성TV 꺼집니다.
+	    
+	    // a표준Tv 변수에 LGTv 객체를 연결한다.
+	    a표준Tv = aLGTv;
+	    a표준Tv.켜기();
+	    // 출력 : LGTV 켜집니다.
+	    a표준Tv.끄기();
+	    // 출력 : LGTV 꺼집니다.
+	    
+	    // LGTV만의 고유 기능을 표준Tv 리모콘을 이용해서 호출하기 => 불가능
+	    // (LGTv) => a표준Tv 변수에 있던 표준Tv 리모콘이 LGTv리모콘화 해서 `aLGTv2` 변수에 들어간다.
+	    LGTv aLGTv2 = (LGTv)a표준Tv;
+	    aLGTv2.게임모드전환();
+	  }
+	}
+class 표준Tv {
+	void 켜기(){};
+	void 끄기(){};
+}
+	class 샤오미Tv extends 표준Tv {
+	  void 켜기() {
+	    System.out.println("샤오미Tv 켜집니다.");
+	  }
+	  
+	  void 끄기() {
+	    System.out.println("샤오미Tv 꺼집니다.");
+	  }
+	  
+	  void vr켜기() {
+	    System.out.println("샤오미Tv vr켜기!");
+	  }
+	}
 
-class CorrectAnswer {
-	String answer;
-	String answer1;
-	String answer2;
-	
-	public CorrectAnswer(String answer, String answer1, String answer2) {
-		this.answer = answer;
-		this.answer1 = answer1;
-		this.answer2 = answer2;		
+	class 삼성Tv extends 표준Tv {
+	  void 켜기() {
+	    System.out.println("삼성Tv 켜집니다.");
+	  }
+	  
+	  void 끄기() {
+	    System.out.println("삼성Tv 꺼집니다.");
+	  }
+	  
+	  void ar켜기() {
+	    System.out.println("삼성Tv ar켜기!");
+	  }
 	}
-}
-public class Main {
-	public static void main(String[] args) {
-//		계모 콩쥐 팥쥐 세 인물의 정보 저장하고 비교하는 CRUD 연습 #나홀로안보고
-		Scanner sc = new Scanner(System.in);
-		while(true) {
-			String controller = "a";
-			System.out.printf("==콩쥐팥쥐 인물맞추기!==%n콩쥐팥쥐 등장인물 중 엄마는?%n정답 : ");
-			String answer = sc.nextLine();
-			System.out.printf("언니의 이름은?%n정답 : ");
-			String answer1 = sc.nextLine();
-			System.out.printf("동생의 이름은?%n정답 : ");
-			String answer2 = sc.nextLine();
-			
-			List<CorrectAnswer> answers = new ArrayList<>();
-			
-			CorrectAnswer usersAnswers = new CorrectAnswer(answer, answer1, answer2);
-			answers.add(usersAnswers);
-			CorrectAnswer correct = answers.get(0);
-			
-			int wrongIndex = 0;
-			if(!correct.answer.equals("계모") || !correct.answer1.equals("팥쥐") || !correct.answer2.equals("콩쥐")) {
-				if(!correct.answer.equals("계모")) {
-					System.out.printf("입력한 %s는 오답 ! 정답은 : 계모%n", answer);
-					wrongIndex++;					
-				}
-				if(!correct.answer1.equals("팥쥐")) {
-					System.out.printf("입력한 %s는 오답 ! 정답은 : 팥쥐%n", answer1);
-					wrongIndex++;
-				}
-				if(!correct.answer2.equals("콩쥐")) {
-					System.out.printf("입력한 %s는 오답 ! 정답은 : 콩쥐%n", answer2);
-					wrongIndex++;
-				}
-				System.out.printf("오답 수 : %d%n", wrongIndex);	
-			}else {
-				while(true) {
-					System.out.println("축하합니다 백점이에요!");
-					System.out.printf("다시 풀어볼까요? 예(y),아니요(n)%n명령어 ) ");
-					String command = sc.nextLine().trim();
-					if(command.equals("y")) {
-						break;
-					}else if(command.equals("n")){
-						System.out.println("==종료==");
-						controller = "end";
-						break;
-					}else {
-						System.out.printf("정확한 값을 입력해주세요!%n%n");
-					}
-				}
-				if (controller.equals("end")) {
-					break;
-				}
-			}
-			
-			if(wrongIndex != 0) {
-				while(true) {
-					System.out.printf("다시 풀어볼까요? ㅠㅠ 예(y),아니요(n)%n명령어 )");
-					String command = sc.nextLine().trim();
-					if(command.equals("y")) {
-						break;
-					}else if(command.equals("n")){
-						System.out.println("==종료==");
-						controller = "end";
-						break;
-					}else {
-						System.out.printf("정확한 값을 입력해주세요!%n%n");
-					}
-				}
-				if(controller.equals("end")) {
-					break;
-				}
-			}
-		}
+
+	class LGTv extends 표준Tv {
+	  void 켜기() {
+	    System.out.println("LGTv 켜집니다.");
+	  }
+	  
+	  void 끄기() {
+	    System.out.println("LGTv 꺼집니다.");
+	  }
+	  
+	  void 게임모드전환() {
+	    System.out.println("LGTv 게임모드전환!");
+	  }
 	}
-}
